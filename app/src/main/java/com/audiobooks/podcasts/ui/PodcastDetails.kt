@@ -78,13 +78,13 @@ fun PodcastDetailsScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(36.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         // Podcast Title & Publisher
         Text(
             text = podcast.title,
             fontSize = 22.sp,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.Black,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(
                 horizontal = 24.dp

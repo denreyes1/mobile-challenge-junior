@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -31,7 +32,6 @@ import com.audiobooks.podcasts.ui.theme.PodcastsTheme
 @Composable
 fun PodcastListScreen(onShowDetails: (podcast: Podcast) -> Unit) {
     // TODO - Implement the ViewModel to fetch the list of podcasts and update the UI
-    // TODO - Modify this file as needed
     // TODO - Coil dependency was added as the image loader for the podcast image - feel free to use any other image loader
     val viewModel: PodcastListViewModel = viewModel()
 
@@ -57,9 +57,21 @@ private fun PodcastListUI(
             "Ted"),
     )
 
-    LazyColumn {
-        items(podcasts) { podcast ->
-            PodcastItemView(podcast, onShowDetails)
+    Column() {
+        Spacer(modifier = Modifier.height(32.dp))
+        Text(
+            text = "Podcasts",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Black,
+            modifier = Modifier.padding(
+                horizontal = 24.dp
+            )
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        LazyColumn {
+            items(podcasts) { podcast ->
+                PodcastItemView(podcast, onShowDetails)
+            }
         }
     }
 }
