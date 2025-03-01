@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -17,7 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,13 +43,10 @@ fun PodcastDetailsScreen(
     podcast: Podcast,
     onBack: () -> Unit
 ) {
-    // Track favourite state for Favourite text
-    var isFavourited by remember { mutableStateOf(false) }
+    var isFavourited by rememberSaveable { mutableStateOf(false) }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize()
     ) {
         // Back Button
         Box(
@@ -55,13 +54,10 @@ fun PodcastDetailsScreen(
                 .fillMaxWidth()
         ) {
             Button(
-                onClick = {
-                    onBack()
-                },
+                onClick = onBack,
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                shape = RoundedCornerShape(8.dp),
-
-                ) {
+                shape = RoundedCornerShape(8.dp)
+            ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_back_ios),
                     contentDescription = "Back",
@@ -78,71 +74,72 @@ fun PodcastDetailsScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        // Podcast Title & Publisher
-        Text(
-            text = podcast.title,
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Black,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(
-                horizontal = 24.dp
-            )
-        )
-
-        Text(
-            text = podcast.publisher,
-            fontSize = 16.sp,
-            fontStyle = FontStyle.Italic,
-            color = Color.Gray,
-            modifier = Modifier.padding(
-                horizontal = 24.dp
-            )
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Podcast Image
-        AsyncImage(
-            model = podcast.image,
-            contentDescription = podcast.title,
+        Column(
             modifier = Modifier
-                .size(220.dp)
-                .clip(RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Favourite Button
-        Button(
-            onClick = {
-                isFavourited = !isFavourited
-            },
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
-            shape = RoundedCornerShape(8.dp),
-            modifier = Modifier.padding(horizontal = 32.dp)
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()), // Enables scrolling
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Podcast Title & Publisher
             Text(
-                text = if (isFavourited) "Favourited" else "Favourite",
-                color = Color.White,
-                fontSize = 16.sp
+                text = podcast.title,
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Black,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 24.dp)
+            )
+
+            Text(
+                text = podcast.publisher,
+                fontSize = 16.sp,
+                fontStyle = FontStyle.Italic,
+                color = Color.Gray,
+                modifier = Modifier.padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Podcast Image
+            AsyncImage(
+                model = podcast.image,
+                contentDescription = podcast.title,
+                modifier = Modifier
+                    .size(220.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Favourite Button
+            Button(
+                onClick = { isFavourited = !isFavourited },
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier.padding(horizontal = 32.dp)
+            ) {
+                Text(
+                    text = if (isFavourited) "Favourited" else "Favourite",
+                    color = Color.White,
+                    fontSize = 16.sp
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Podcast Description
+            Text(
+                text = podcast.description,
+                fontSize = 14.sp,
+                textAlign = TextAlign.Center,
+                color = Color.Gray,
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .padding(bottom = 24.dp)
             )
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Podcast Description
-        Text(
-            text = podcast.description,
-            fontSize = 14.sp,
-            textAlign = TextAlign.Center,
-            color = Color.Gray,
-            modifier = Modifier.padding(
-                horizontal = 24.dp
-            )
-        )
     }
 }
 
