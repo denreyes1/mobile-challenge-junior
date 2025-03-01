@@ -3,7 +3,6 @@ package com.audiobooks.podcasts.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.audiobooks.podcasts.network.PodcastRepository
-import com.denreyes.clink.views.PodcastUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch

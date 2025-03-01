@@ -42,7 +42,7 @@ fun PodcastListScreen(onShowDetails: (podcast: Podcast) -> Unit) {
     val viewModel: PodcastListViewModel = viewModel()
     val podcastUIState by viewModel.podcastUIState.collectAsStateWithLifecycle()
 
-    Column() {
+    Column {
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             text = "Podcasts",

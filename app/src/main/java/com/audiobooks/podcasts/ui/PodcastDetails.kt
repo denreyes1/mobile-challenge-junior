@@ -154,8 +154,7 @@ private fun PodcastDetailsScreenPreview() {
                 id="abc",
                 image="https://cdn-images-3.listennotes.com/podcasts/the-ed-mylett-show-ed-mylett-cumulus-guxpvEVnHTJ-PEUIT9RBhZD.1400x1400.jpg",
                 publisher="Podcast Publisher"
-            ),
-            {}
-        )
+            )
+        ) {}
     }
 }
