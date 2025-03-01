@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel to manage podcast list state and retrieve data from the repository.
+ */
 class PodcastListViewModel : ViewModel() {
     val podcastUIState = MutableStateFlow(PodcastUIState())
     private val repository = PodcastRepository()
@@ -15,6 +18,9 @@ class PodcastListViewModel : ViewModel() {
         getPodcasts()
     }
 
+    /**
+     * Fetches podcasts from the repository and updates UI state accordingly.
+     */
     private fun getPodcasts() {
         podcastUIState.value = PodcastUIState(isLoading = true)
         viewModelScope.launch {

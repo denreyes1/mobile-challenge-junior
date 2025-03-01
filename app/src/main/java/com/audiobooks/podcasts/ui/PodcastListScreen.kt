@@ -39,6 +39,11 @@ import com.audiobooks.podcasts.R
 import com.audiobooks.podcasts.model.Podcast
 import com.audiobooks.podcasts.ui.theme.PodcastsTheme
 
+/**
+ * Displays a list of podcasts and handles UI states such as loading and errors.
+ *
+ * @param onShowDetails Callback to handle navigation to the details screen.
+ */
 @Composable
 fun PodcastListScreen(onShowDetails: (podcast: Podcast) -> Unit) {
     val viewModel: PodcastListViewModel = viewModel()
