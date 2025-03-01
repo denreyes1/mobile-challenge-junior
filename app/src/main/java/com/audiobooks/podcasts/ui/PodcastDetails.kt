@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -60,13 +61,13 @@ fun PodcastDetailsScreen(
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_back_ios),
-                    contentDescription = "Back",
+                    contentDescription = stringResource(id = R.string.back),
                     tint = Color.Black,
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Back",
+                    text = stringResource(id = R.string.back),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
@@ -121,7 +122,7 @@ fun PodcastDetailsScreen(
                 modifier = Modifier.padding(horizontal = 32.dp)
             ) {
                 Text(
-                    text = if (isFavourited) "Favourited" else "Favourite",
+                    text = if (isFavourited) stringResource(id = R.string.favourited) else stringResource(id = R.string.favourite),
                     color = Color.White,
                     fontSize = 16.sp
                 )
@@ -154,8 +155,7 @@ private fun PodcastDetailsScreenPreview() {
                 id="abc",
                 image="https://cdn-images-3.listennotes.com/podcasts/the-ed-mylett-show-ed-mylett-cumulus-guxpvEVnHTJ-PEUIT9RBhZD.1400x1400.jpg",
                 publisher="Podcast Publisher"
-            ),
-            {}
-        )
+            )
+        ) {}
     }
 }

@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.audiobooks.podcasts.R
 import com.audiobooks.podcasts.model.Podcast
 import com.audiobooks.podcasts.ui.theme.PodcastsTheme
 
@@ -42,10 +44,10 @@ fun PodcastListScreen(onShowDetails: (podcast: Podcast) -> Unit) {
     val viewModel: PodcastListViewModel = viewModel()
     val podcastUIState by viewModel.podcastUIState.collectAsStateWithLifecycle()
 
-    Column() {
+    Column {
         Spacer(modifier = Modifier.height(32.dp))
         Text(
-            text = "Podcasts",
+            text = stringResource(id = R.string.app_name),
             fontSize = 24.sp,
             fontWeight = FontWeight.Black,
             modifier = Modifier.padding(

@@ -1,4 +1,4 @@
-package com.denreyes.clink.views
+package com.audiobooks.podcasts.ui
 
 import com.audiobooks.podcasts.model.Podcast
 
