@@ -39,6 +39,13 @@ import com.audiobooks.podcasts.R
 import com.audiobooks.podcasts.model.Podcast
 import com.audiobooks.podcasts.ui.theme.PodcastsTheme
 
+/**
+ * Displays the details of a podcast, including its title, publisher, image, and description.
+ * Provides options to navigate back and mark the podcast as a favorite.
+ *
+ * @param podcast The podcast object containing title, description, image, and publisher information.
+ * @param onBack Callback function to handle back navigation.
+ */
 @Composable
 fun PodcastDetailsScreen(
     podcast: Podcast,

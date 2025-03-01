@@ -19,7 +19,10 @@ import com.audiobooks.podcasts.ui.PodcastListScreen
 import com.audiobooks.podcasts.ui.theme.PodcastsTheme
 import kotlin.reflect.typeOf
 
-
+/**
+ * MainActivity serves as the entry point of the application.
+ * Sets up the navigation between PodcastListScreen and PodcastDetailsScreen using Jetpack Compose.
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
